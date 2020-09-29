@@ -17,7 +17,7 @@ namespace gr {
 
     class WAVELEARNER_API inference : virtual public gr::sync_block {
      public:
-      typedef boost::shared_ptr<inference> sptr;
+      typedef std::shared_ptr<inference> sptr;
 
       /*!
        * \brief Return a shared_ptr to a new instance of wavelearner::inference.
