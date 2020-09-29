@@ -1,0 +1,7 @@
+build/
+.idea/
+*.pyc
+*.pyo
+*~
+TODO.md
+**/.vscode
