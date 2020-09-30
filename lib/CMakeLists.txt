@@ -30,7 +30,12 @@ if(NOT wavelearner_sources)
 endif(NOT wavelearner_sources)
 
 add_library(gnuradio-wavelearner SHARED ${wavelearner_sources})
-target_link_libraries(gnuradio-wavelearner gnuradio::gnuradio-runtime)
+target_link_libraries(gnuradio-wavelearner gnuradio::gnuradio-runtime
+${TensorRT_LIBRARY}
+${CUDA_CUDA_LIBRARY}   # CUDA Driver API
+${CUDA_CUDART_LIBRARY} # CUDA Runtime API
+${CUDA_CUFFT_LIBRARIES}
+)
 target_include_directories(gnuradio-wavelearner
     PUBLIC $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/../include>
     PUBLIC $<INSTALL_INTERFACE:include>

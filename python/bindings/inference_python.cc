@@ -14,7 +14,7 @@
 /* BINDTOOL_GEN_AUTOMATIC(0)                                                       */
 /* BINDTOOL_USE_PYGCCXML(0)                                                        */
 /* BINDTOOL_HEADER_FILE(inference.h)                                        */
-/* BINDTOOL_HEADER_FILE_HASH(19a54979608c15e664fd436c9ff19c9b)                     */
+/* BINDTOOL_HEADER_FILE_HASH(4b253b216ffac36dbcf6505db0c9743d)                     */
 /***********************************************************************************/
 
 #include <pybind11/complex.h>
@@ -30,13 +30,18 @@ namespace py = pybind11;
 void bind_inference(py::module& m)
 {
 
-    using inference    = gr::wavelearner::inference;
+    using inference    = ::gr::wavelearner::inference;
 
 
     py::class_<inference, gr::sync_block, gr::block, gr::basic_block,
         std::shared_ptr<inference>>(m, "inference", D(inference))
 
         .def(py::init(&inference::make),
+           py::arg("plan_filepath"),
+           py::arg("complex_input"),
+           py::arg("input_vlen"),
+           py::arg("output_vlen"),
+           py::arg("batch_size"),
            D(inference,make)
         )
         

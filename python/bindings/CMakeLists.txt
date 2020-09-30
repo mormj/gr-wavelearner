@@ -8,10 +8,10 @@
 ########################################################################
 # Check if there is C++ code at all
 ########################################################################
-if(NOT tmp_sources)
+if(NOT wavelearner_sources)
     MESSAGE(STATUS "No C++ sources... skipping python bindings")
     return()
-endif(NOT tmp_sources)
+endif(NOT wavelearner_sources)
 
 ########################################################################
 # Check for pygccxml

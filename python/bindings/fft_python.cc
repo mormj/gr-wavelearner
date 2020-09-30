@@ -14,7 +14,7 @@
 /* BINDTOOL_GEN_AUTOMATIC(0)                                                       */
 /* BINDTOOL_USE_PYGCCXML(0)                                                        */
 /* BINDTOOL_HEADER_FILE(fft.h)                                        */
-/* BINDTOOL_HEADER_FILE_HASH(cfd9039ea9ac3a254ae64d132dd4914a)                     */
+/* BINDTOOL_HEADER_FILE_HASH(5153091f16a39a40f4d786d717e4134e)                     */
 /***********************************************************************************/
 
 #include <pybind11/complex.h>
@@ -30,13 +30,16 @@ namespace py = pybind11;
 void bind_fft(py::module& m)
 {
 
-    using fft    = gr::wavelearner::fft;
+    using fft    = ::gr::wavelearner::fft;
 
 
     py::class_<fft, gr::sync_block, gr::block, gr::basic_block,
         std::shared_ptr<fft>>(m, "fft", D(fft))
 
         .def(py::init(&fft::make),
+           py::arg("vlen"),
+           py::arg("fft_size"),
+           py::arg("forward_fft"),
            D(fft,make)
         )
         
